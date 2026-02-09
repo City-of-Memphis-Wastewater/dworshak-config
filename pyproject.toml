@@ -1,0 +1,9 @@
+[project]
+name = "dworshak-config"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dworshak-prompt>=0.2.4",
+]
