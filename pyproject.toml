@@ -6,7 +6,6 @@ description = "Get and set two-key plaintext configuration values stored to JSON
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "typer>=0.23.0",
 ]
 
 authors = [
@@ -48,6 +47,12 @@ Repository = "https://github.com/city-of-memphis-wastewater/dworshak-config"
 [project.scripts]
 dworshak-config = "dworshak_config.__main__:run"
 #dworshak-config = "dworshak_config.cli:app"
+
+[project.optional-dependencies]
+typer = [
+    "typer>=0.21.1",
+    "rich>=14.3.2",
+]
 
 [tool.uv]
 # This tells uv that if it can't find a wheel for aarch64,
