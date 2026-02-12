@@ -5,8 +5,10 @@ from rich.console import Console
 import os
 from pathlib import Path
 from typing import Optional
-from typer_helptree import add_typer_helptree
-
+try:
+    from typer_helptree import add_typer_helptree
+except:
+    pass
 from .dworshak_config import ConfigManager
 from ._version import __version__
 
@@ -42,8 +44,10 @@ def main(ctx: typer.Context,
         typer.echo(__version__)
         raise typer.Exit(code=0)
 
-add_typer_helptree(app=app, console=console, version = __version__,hidden=True)
-
+try:
+    add_typer_helptree(app=app, console=console, version = __version__,hidden=True)
+except:
+    pass
 @app.command()
 def get(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),

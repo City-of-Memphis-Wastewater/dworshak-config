@@ -30,9 +30,6 @@ jobs:
 
       - name: Install uv
         run: pip install --upgrade uv
-
-      - name: Install build tool via uv (system-wide, no venv needed)
-        run: uv tool install build --upgrade
         
       - name: Build package (sdist + wheel)
         run: uv build
