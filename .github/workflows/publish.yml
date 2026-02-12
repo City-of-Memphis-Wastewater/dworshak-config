@@ -39,7 +39,7 @@ jobs:
 
       - name: Test CLI entrypoint
         run: |
-          #dworshak --version
+          uv run dworshak-config --version
           uv run dworshak-config --help
 
       - name: Publish to PyPI
