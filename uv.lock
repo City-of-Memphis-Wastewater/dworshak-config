@@ -4,32 +4,5 @@ requires-python = ">=3.12"
 
 [[package]]
 name = "dworshak-config"
-version = "0.1.0"
+version = "0.1.2"
 source = { virtual = "." }
-dependencies = [
-    { name = "dworshak-prompt" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "dworshak-prompt", specifier = ">=0.2.4" }]
-
-[[package]]
-name = "dworshak-prompt"
-version = "0.2.4"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "pyhabitat" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/07/36/ba4125ef51470605289de6e25c509c8a78d53245ade3ccfbd26c90a9aa1e/dworshak_prompt-0.2.4.tar.gz", hash = "sha256:1929eef12e27f02db55fb324e087864d4a130112283294bc24862e32c18edd28", size = 12819, upload-time = "2026-02-08T18:30:52.114Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9c/6f/98ad22041a5bb4e9b22f21e58e91c69299fb20fe5aaefa062a8192d7f0e5/dworshak_prompt-0.2.4-py3-none-any.whl", hash = "sha256:1e3c0792161b80551147d8ba063f1026442551f34f2ae10d3c13afd2d6ea4e79", size = 15002, upload-time = "2026-02-08T18:30:50.923Z" },
-]
-
-[[package]]
-name = "pyhabitat"
-version = "1.1.37"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/19/12/c49e9d0e71a6b49c8bc51873e1a99a27cf97d8c2df77c58b6d4a7a4cdb22/pyhabitat-1.1.37.tar.gz", hash = "sha256:3c8b2d708f117281d9010a24fded5c3647c6979fe039ad8e846c161bbc0832bb", size = 27868, upload-time = "2026-02-05T21:48:47.866Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/20/92/6b09d1396705e84c7e1d9fb87d12495ea34164771d1ce1151c3e7db8db65/pyhabitat-1.1.37-py3-none-any.whl", hash = "sha256:f4cb2f6544008009f0c986849cbc086f8db59eae5cfd995dc09655db6da84b16", size = 25936, upload-time = "2026-02-05T21:48:46.26Z" },
-]

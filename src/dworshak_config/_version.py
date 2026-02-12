@@ -1,4 +1,4 @@
-# src/dworshak_prompt/_version.py
+# src/dworshak_config/_version.py
 from pathlib import Path
 
 def get_version() -> str:

@@ -1,11 +1,10 @@
-# src/dworshak_prompt/cli.py
+# src/dworshak_config/cli.py
 import typer
 from typer.models import OptionInfo
 from rich.console import Console
 import os
 from pathlib import Path
 
-from .multiplexer import DworshakPrompt, PromptMode 
 from .dworshak_config import ConfigManager
 from ._version import __version__
 
@@ -19,8 +18,8 @@ os.environ["FORCE_COLOR"] = "1"
 os.environ["TERM"] = "xterm-256color"
 
 app = typer.Typer(
-    name="dworshak-prompt",
-    help=f"Multiplexed user input via console, GUI, and web. (v{__version__})",
+    name="dworshak-config",
+    help=f"Store and retrieve plaintext configuration values to JSON. (v{__version__})",
     no_args_is_help=True,
     add_completion=False,
     context_settings={"ignore_unknown_options": True,
@@ -32,22 +31,6 @@ def main(ctx: typer.Context):
     if ctx.invoked_subcommand is None:
         typer.echo(ctx.get_help())
         raise typer.Exit()
-
-@app.command()
-def ask(
-    message: str = typer.Option("Enter value", help="The prompt message."),
-    mode: PromptMode = typer.Option(default = PromptMode.CONSOLE, help="Preferred input mode."),
-    debug: bool = typer.Option(False, "--debug", help="Enable diagnostic logging."),
-):
-    """Get user input and print it to stdout."""
-    val = DworshakPrompt.ask(
-        message=message,
-        priority=[mode],
-        debug=debug, 
-    )
-    if val:
-        print(val)
-
 
 @app.command()
 def config(

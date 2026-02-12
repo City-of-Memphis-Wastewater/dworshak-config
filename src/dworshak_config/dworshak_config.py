@@ -1,11 +1,10 @@
-# src/dworshak_prompt/dworshak_config.py
+# src/dworshak_config/dworshak_config.py
 from pathlib import Path
 import json
 import logging
 from typing import Any
-from dworshak_prompt import DworshakPrompt
 
-logger = logging.getLogger("dworshak_prompt")
+logger = logging.getLogger("dworshak_config")
 
 DEFAULT_CONFIG_PATH = Path.home() / ".dworshak" / "config.json"
 class ConfigManager:
@@ -33,7 +32,7 @@ class ConfigManager:
         except Exception as e:
             logger.error(f"⚠️ Failed to save configuration to {self.path}: {e}")
 
-    def get(
+    def get_defunct(
         self,
         service: str,
         item: str,
@@ -56,7 +55,7 @@ class ConfigManager:
         # If we need to prompt
         actual_prompt = prompt_message or f"[{service}] Enter {item}"
         
-        new_value = DworshakPrompt.ask(
+        """new_value = DworshakPrompt.ask(
             message=actual_prompt,
             suggestion=suggestion or value,
             hide_input=hide_input
@@ -71,10 +70,15 @@ class ConfigManager:
             config[service][item] = new_value
             self._save(config)
             
-        return new_value
+        return new_value"""
+
+    def get_value(self, service: str, item: str) -> str | None:
+        """Pure I/O: Retrieve from JSON, return None if missing."""
+        config = self._load()
+        return config.get(service, {}).get(item)
 
     def set_value(self, service: str, item: str, value: Any):
-        """Directly sets a nested value."""
+        """Pure I/O: Store value in JSON."""
         config = self._load()
         if service not in config:
             config[service] = {}
