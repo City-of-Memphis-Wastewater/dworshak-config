@@ -91,7 +91,7 @@ Data is stored in a clean, human-readable nested JSON format:
 
 ## Sister Projects
 
-* **CLI/Orchestrator:** [dworshak](https://www.google.com/search?q=%5Bhttps://github.com/City-of-Memphis-Wastewater/dworshak%5D(https://github.com/City-of-Memphis-Wastewater/dworshak)
+* **CLI/Orchestrator:** [dworshak](https://github.com/City-of-Memphis-Wastewater/dworshak)
 * **Interactive UI:** [dworshak-prompt](https://github.com/City-of-Memphis-Wastewater/dworshak-prompt)
 * **Secrets Storage:** [dworshak-secret](https://github.com/City-of-Memphis-Wastewater/dworshak-secret)
 
