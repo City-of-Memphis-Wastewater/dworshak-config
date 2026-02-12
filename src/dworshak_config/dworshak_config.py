@@ -32,12 +32,12 @@ class ConfigManager:
         except Exception as e:
             logger.error(f"⚠️ Failed to save configuration to {self.path}: {e}")
 
-    def get_value(self, service: str, item: str) -> str | None:
+    def get(self, service: str, item: str) -> str | None:
         """Pure I/O: Retrieve from JSON, return None if missing."""
         config = self._load()
         return config.get(service, {}).get(item)
 
-    def set_value(self, service: str, item: str, value: Any):
+    def set(self, service: str, item: str, value: Any):
         """Pure I/O: Store value in JSON."""
         config = self._load()
         # config.setdefault(service, {})[item] = value

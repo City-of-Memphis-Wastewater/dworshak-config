@@ -43,35 +43,62 @@ def main(ctx: typer.Context,
 
 
 @app.command()
-def config(
+def get(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
     value: str = typer.Option(None, "--set", help="Directly set a value."),
-    message: str = typer.Option(None, "--message", help="Custom prompt message."),
     path: Path = typer.Option(None, "--path", help="Custom config file path."),
-    overwrite: bool = typer.Option(False, "--overwrite", help="Force a new prompt."),
-    hide: bool = typer.Option(False, "--hide", help="Mask input for sensitive info."),
 ):
     """
     Get or set a configuration value using Service and Item (Vault-style).
     """
     manager = ConfigManager(path=path)
     
-    if value is not None:
-        manager.set_value(service, item, value)
-        display_val = "***" if hide else value
-        typer.echo(f"Stored: [{service}] {item} = {display_val}")
-    else:
-        result = manager.get(
+    value = manager.get(
+        service=service,
+        item=item,
+    )
+    display_val = "***" if hide else value
+    if value:
+        # Only print the value to stdout for piping/capture
+        typer.echo(f"[{service}] {item} = {display_val}")
+
+@app.command()
+def set(
+    service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
+    item: str = typer.Argument(..., help="The item key (e.g., port)."),
+    value: str = typer.Option(None, "--set", help="Directly set a value."),
+    message: str = typer.Option(None, "--message", help="Custom prompt message."),
+    path: Path = typer.Option(None, "--path", help="Custom config file path."),
+    overwrite: bool = typer.Option(False, "--overwrite", help="Force a new prompt.")
+):
+    """
+    Get or set a configuration value using Service and Item (Vault-style).
+    """
+    manager = ConfigManager(path=path)
+    
+    exisiting_value = manager.get(
+        service=service,
+        item=item,
+    )
+    if exisiting_value is not None :
+        manager.get_value(service, item, value)
+        display_existing_val = value
+        typer.echo(f"Existing: [{service}] {item} = {display_existing_val}")
+
+    if (exisiting_value is None) or (exisiting_value is not None and overwrite):
+        value = manager.set(
             service=service,
             item=item,
             prompt_message=message,
-            overwrite=overwrite,
-            hide_input=hide
+            overwrite=overwrite
         )
-        if result:
-            # Only print the result to stdout for piping/capture
-            print(result)
+    else:
+        value =  exisiting_value
+    
+    if value:
+        # Only print the value to stdout for piping/capture
+        typer.echo(f"[{service}] {item} = {value}")
 
 if __name__ == "__main__":
     app()
