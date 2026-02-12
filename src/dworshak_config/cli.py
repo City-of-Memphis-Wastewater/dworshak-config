@@ -4,6 +4,7 @@ from typer.models import OptionInfo
 from rich.console import Console
 import os
 from pathlib import Path
+from typing import Optional
 
 from .dworshak_config import ConfigManager
 from ._version import __version__
@@ -26,11 +27,20 @@ app = typer.Typer(
                       "help_option_names": ["-h", "--help"]},
 )
 
+
 @app.callback(invoke_without_command=True)
-def main(ctx: typer.Context):
-    if ctx.invoked_subcommand is None:
-        typer.echo(ctx.get_help())
-        raise typer.Exit()
+def main(ctx: typer.Context,
+    version: Optional[bool] = typer.Option(
+    None, "--version", is_flag=True, help="Show the version."
+    )
+    ):
+    """
+    Enable --version
+    """
+    if version:
+        typer.echo(__version__)
+        raise typer.Exit(code=0)
+
 
 @app.command()
 def config(
