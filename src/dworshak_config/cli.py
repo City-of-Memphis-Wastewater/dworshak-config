@@ -50,7 +50,7 @@ def get(
     path: Path = typer.Option(None, "--path", help="Custom config file path."),
 ):
     """
-    Get or set a configuration value using Service and Item (Vault-style).
+    Get or set a configuration value using Service and Item (vault-style, two-key).
     """
     manager = ConfigManager(path=path)
     
@@ -72,7 +72,7 @@ def set(
     overwrite: bool = typer.Option(False, "--overwrite", help="Force a new prompt.")
 ):
     """
-    Get or set a configuration value using Service and Item (Vault-style).
+    Get or set a configuration value using Service and Item (vault-style, two-key).
     """
     manager = ConfigManager(path=path)
     
