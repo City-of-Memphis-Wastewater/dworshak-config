@@ -15,7 +15,7 @@ jobs:
 
     permissions:
       id-token: write   # Required for Trusted Publishing (OIDC)
-      contents: read    # Needed to checkout code
+      contents: write    # Needed to checkout code and to upload artifacts  
 
     steps:
       - name: Checkout repository
