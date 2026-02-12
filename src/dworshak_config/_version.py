@@ -14,7 +14,7 @@ def get_version() -> str:
     # Try metadata (Installed)
     try:
         from importlib.metadata import version, PackageNotFoundError
-        return version("dworshak-prompt")
+        return version("dworshak-config")
     except (ImportError, PackageNotFoundError):
         pass
 
