@@ -49,7 +49,7 @@ Perfect for project-specific settings that shouldn't live in the global Dworshak
 from dworshak_config import ConfigManager
 
 # Point to a specific project file
-project_cfg = ConfigManager("./.my_project_config.json")
+project_cfg = ConfigManager("./.my_project/config.json")
 project_cfg.set_value("internal", "debug_mode", True)
 
 ```
