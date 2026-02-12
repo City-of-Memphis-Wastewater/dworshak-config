@@ -12,6 +12,20 @@ def stdlib_notify(msg: str):
     sys.stderr.write(f"{msg}\n")
     sys.stderr.flush()
 
+def stdlib_notify_redirect(command: str):
+    """
+    Detailed notification for Typer-only commands with platform-specific guidance.
+    """
+    msg = [
+        f"dworshak-config [lite]:: The '{command}' command is only available in the full CLI.",
+        "",
+        "To enable the full interface, install the required extras:",
+        "  pip install 'dworshak-config[typer]'",
+        ""
+    ]
+    sys.stderr.write("\n".join(msg) + "\n")
+    sys.stderr.flush()
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         prog="dworshak-config",
@@ -41,11 +55,23 @@ def main() -> int:
     set_p.add_argument("--path", type=Path, help="Custom config file path")
     set_p.add_argument("-h", "--help", action="help", help="Show this help")
 
+    # --- Typer-Only Commands (Redirects) ---
+    # We add these to the parser so they show up in --help, but they all trigger the same error.
+    typer_only = ["helptree"]
+    for cmd in typer_only:
+        subparsers.add_parser(cmd, help=f"[Requires Typer] Full version of {cmd}", add_help=False)
+
     args = parser.parse_args()
 
     if not args.command:
         parser.print_help()
         return 0
+    
+    # Handle Redirections first
+    if args.command in typer_only:
+        stdlib_notify_redirect(args.command)
+        return 1
+
 
     try:
         manager = ConfigManager(path=args.path)

@@ -5,6 +5,7 @@ from rich.console import Console
 import os
 from pathlib import Path
 from typing import Optional
+from typer_helptree import add_typer_helptree
 
 from .dworshak_config import ConfigManager
 from ._version import __version__
@@ -41,12 +42,13 @@ def main(ctx: typer.Context,
         typer.echo(__version__)
         raise typer.Exit(code=0)
 
+add_typer_helptree(app=app, console=console, version = __version__,hidden=True)
 
 @app.command()
 def get(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
-    value: str = typer.Option(None, "--set", help="Directly set a value."),
+    value: str = typer.Option(None, "--value", help="Identify a value."),
     path: Path = typer.Option(None, "--path", help="Custom config file path."),
 ):
     """
@@ -66,7 +68,7 @@ def get(
 def set(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
-    value: str = typer.Option(None, "--set", help="Directly set a value."),
+    value: str = typer.Option(None, "--value", help="Directly set a value."),
     message: str = typer.Option(None, "--message", help="Custom prompt message."),
     path: Path = typer.Option(None, "--path", help="Custom config file path."),
     overwrite: bool = typer.Option(False, "--overwrite", help="Force a new prompt.")
