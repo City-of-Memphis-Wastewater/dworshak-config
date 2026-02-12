@@ -2,7 +2,7 @@
 
 **dworshak-config** is a lightweight, zero-dependency library for managing nested JSON configurations. It serves as the standard storage backend for the Dworshak ecosystem, providing a stable way to persist non-sensitive application settings.
 
-By decoupling storage from user interaction, `dworshak-config` ensures that your scripts can retrieve settings silently when they exist, leaving the "how to ask for them" to its sister package, [dworshak-prompt](https://www.google.com/search?q=%5Bhttps://github.com/City-of-Memphis-Wastewater/dworshak-prompt%5D(https://github.com/City-of-Memphis-Wastewater/dworshak-prompt)).
+By decoupling storage from user interaction, `dworshak-config` ensures that your scripts can retrieve settings silently when they exist, leaving the "how to ask for them" to its sister package, [dworshak-prompt](https://github.com/City-of-Memphis-Wastewater/dworshak-prompt).
 
 ## Features
 
