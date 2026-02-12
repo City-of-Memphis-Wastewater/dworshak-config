@@ -32,46 +32,6 @@ class ConfigManager:
         except Exception as e:
             logger.error(f"⚠️ Failed to save configuration to {self.path}: {e}")
 
-    def get_defunct(
-        self,
-        service: str,
-        item: str,
-        prompt_message: str | None = None,
-        suggestion: str | None = None,
-        overwrite: bool = False,
-        hide_input: bool = False,
-        forget: bool = False,
-    ) -> str | None:
-        """Retrieves a value using service/item logic, prompting if missing."""
-        config = self._load()
-        
-        # Access nested: config[service][item]
-        service_dict = config.get(service, {})
-        value = service_dict.get(item)
-
-        if value is not None and not overwrite:
-            return value
-
-        # If we need to prompt
-        actual_prompt = prompt_message or f"[{service}] Enter {item}"
-        
-        """new_value = DworshakPrompt.ask(
-            message=actual_prompt,
-            suggestion=suggestion or value,
-            hide_input=hide_input
-        )
-
-        if new_value is None:
-            return value if not overwrite else None
-
-        if not forget:
-            if service not in config:
-                config[service] = {}
-            config[service][item] = new_value
-            self._save(config)
-            
-        return new_value"""
-
     def get_value(self, service: str, item: str) -> str | None:
         """Pure I/O: Retrieve from JSON, return None if missing."""
         config = self._load()
