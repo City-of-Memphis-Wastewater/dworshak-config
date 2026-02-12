@@ -6,6 +6,18 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ---
 
+## [0.1.5] – 2026-02-12
+### Added:
+- README
+
+---
+
+## [0.1.4] – 2026-02-12
+### Added:
+- Add build artifact upload from publish.yml to release.
+
+---
+
 ## [0.1.3] – 2026-02-12
 ### Changed:
 - Dynamic versioning from VERSION file.
