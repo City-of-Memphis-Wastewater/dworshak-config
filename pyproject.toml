@@ -46,12 +46,12 @@ Repository = "https://github.com/city-of-memphis-wastewater/dworshak-config"
 
 [project.scripts]
 dworshak-config = "dworshak_config.__main__:run"
-#dworshak-config = "dworshak_config.cli:app"
 
 [project.optional-dependencies]
 typer = [
     "typer>=0.21.1",
     "rich>=14.3.2",
+    "typer-helptree>=0.1.10",
 ]
 
 [tool.uv]
