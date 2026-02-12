@@ -3,5 +3,7 @@ name = "dworshak-config"
 version = "0.1.2"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+requires-python = ">=3.9"
+dependencies = [
+    "typer>=0.23.0",
+]

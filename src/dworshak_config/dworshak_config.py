@@ -80,6 +80,7 @@ class ConfigManager:
     def set_value(self, service: str, item: str, value: Any):
         """Pure I/O: Store value in JSON."""
         config = self._load()
+        # config.setdefault(service, {})[item] = value
         if service not in config:
             config[service] = {}
         config[service][item] = value
