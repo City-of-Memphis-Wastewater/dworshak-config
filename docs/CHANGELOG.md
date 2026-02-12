@@ -6,6 +6,18 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ---
 
+## [0.1.6] – 2026-02-12
+### Changed:
+- Update README
+- typer / rich are now optional deps
+- cli.py stabilized.
+- Dead code removed from dworshak_config.py
+
+### Added:
+- cli_stdlib.py
+
+---
+
 ## [0.1.5] – 2026-02-12
 ### Added:
 - README
