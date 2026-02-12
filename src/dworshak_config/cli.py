@@ -58,10 +58,9 @@ def get(
         service=service,
         item=item,
     )
-    display_val = "***" if hide else value
     if value:
         # Only print the value to stdout for piping/capture
-        typer.echo(f"[{service}] {item} = {display_val}")
+        typer.echo(f"[{service}] {item} = {value}")
 
 @app.command()
 def set(
