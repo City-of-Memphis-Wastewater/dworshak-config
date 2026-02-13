@@ -6,6 +6,12 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ---
 
+## [0.1.7] – 2026-02-12
+### Changed:
+- Make typer an optional dependency group.
+
+---
+
 ## [0.1.6] – 2026-02-12
 ### Changed:
 - Update README
