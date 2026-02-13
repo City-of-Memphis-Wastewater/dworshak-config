@@ -6,6 +6,12 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ---
 
+## [0.2.1] – 2026-02-13
+### Changed:
+- Renmaing: onfigManager -> DworshakConfig. manager -> config_mngr
+
+---
+
 ## [0.1.7] – 2026-02-12
 ### Changed:
 - Make typer an optional dependency group.
