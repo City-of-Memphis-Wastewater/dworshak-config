@@ -103,7 +103,7 @@ def set(
     
     if value:
         # Only print the value to stdout for piping/capture
-        typer.echo(f"[{service}] {item} = {value}")
+        typer.echo(f"[{service}] [{item}] = {value}")
 
 if __name__ == "__main__":
     app()
