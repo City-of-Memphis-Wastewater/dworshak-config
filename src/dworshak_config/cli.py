@@ -66,7 +66,7 @@ def get(
     )
     if value:
         # Only print the value to stdout for piping/capture
-        typer.echo(f"[{service}] {item} = {value}")
+        typer.echo(f"[{service}] [{item}] = {value}")
 
 @app.command()
 def set(
@@ -89,7 +89,7 @@ def set(
     if exisiting_value is not None :
         manager.get_value(service, item, value)
         display_existing_val = value
-        typer.echo(f"Existing: [{service}] {item} = {display_existing_val}")
+        typer.echo(f"Existing: [{service}] [{item}] = {display_existing_val}")
 
     if (exisiting_value is None) or (exisiting_value is not None and overwrite):
         value = manager.set(
