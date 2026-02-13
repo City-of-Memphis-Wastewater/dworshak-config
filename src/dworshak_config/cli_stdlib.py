@@ -80,16 +80,16 @@ def main() -> int:
             value = manager.get(args.service, args.item)
             if value is not None:
                 # Direct match to Typer output
-                print(f"[{args.service}] {args.item} = {value}")
+                print(f"[{args.service}] [{args.item}] = {value}")
                 return 0
             else:
-                stdlib_notify(f"Error: [{args.service}] {args.item} not found.")
+                stdlib_notify(f"Error: [{args.service}] [{args.item}] not found.")
                 return 1
 
         elif args.command == "set":
             manager.set(args.service, args.item, args.value)
-            stdlib_notify(f"Stored [{args.service}] {args.item} successfully.")
-            print(f"[{args.service}] {args.item} = {args.value}")
+            stdlib_notify(f"Stored [{args.service}] [{args.item}] successfully.")
+            print(f"[{args.service}] [{args.item}] = {args.value}")
             return 0
 
     except KeyboardInterrupt:
