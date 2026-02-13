@@ -7,9 +7,13 @@ from typing import Any
 logger = logging.getLogger("dworshak_config")
 
 DEFAULT_CONFIG_PATH = Path.home() / ".dworshak" / "config.json"
+
 class ConfigManager:
     def __init__(self, path: str | Path | None = None):
-        self.path = Path(path) if path else DEFAULT_CONFIG_PATH
+        if path and Path(path).exists() and str(path).endswith(".json"):
+            self.path = Path(path)
+        else:
+            self.path = DEFAULT_CONFIG_PATH
 
     def _load(self) -> dict:
         """Loads the nested JSON config."""
