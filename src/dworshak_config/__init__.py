@@ -1,4 +1,4 @@
-from .dworshak_config import ConfigManager
+from .core import ConfigManager
 
 __all__ = [
     "ConfigManager"

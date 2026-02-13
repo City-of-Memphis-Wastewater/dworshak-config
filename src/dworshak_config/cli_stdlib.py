@@ -4,7 +4,7 @@ import traceback
 from pathlib import Path
 from typing import Optional
 
-from .dworshak_config import ConfigManager
+from .core import DworshakConfig
 from ._version import __version__
 
 def stdlib_notify(msg: str):
@@ -74,10 +74,10 @@ def main() -> int:
 
 
     try:
-        manager = ConfigManager(path=args.path)
+        config_mngr = DworshakConfig(path=args.path)
 
         if args.command == "get":
-            value = manager.get(args.service, args.item)
+            value = config_mngr.get(args.service, args.item)
             if value is not None:
                 # Direct match to Typer output
                 print(f"[{args.service}] [{args.item}] = {value}")
@@ -87,7 +87,7 @@ def main() -> int:
                 return 1
 
         elif args.command == "set":
-            manager.set(args.service, args.item, args.value)
+            config_mngr.set(args.service, args.item, args.value)
             stdlib_notify(f"Stored [{args.service}] [{args.item}] successfully.")
             print(f"[{args.service}] [{args.item}] = {args.value}")
             return 0

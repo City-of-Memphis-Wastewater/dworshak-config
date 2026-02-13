@@ -1,4 +1,4 @@
-# src/dworshak_config/dworshak_config.py
+# src/dworshak_config/core.py
 from pathlib import Path
 import json
 import logging
@@ -8,7 +8,7 @@ logger = logging.getLogger("dworshak_config")
 
 DEFAULT_CONFIG_PATH = Path.home() / ".dworshak" / "config.json"
 
-class ConfigManager:
+class DworshakConfig:
     def __init__(self, path: str | Path | None = None):
         if path and Path(path).exists() and str(path).endswith(".json"):
             self.path = Path(path)

@@ -9,7 +9,7 @@ try:
     from typer_helptree import add_typer_helptree
 except:
     pass
-from .dworshak_config import ConfigManager
+from .core import DworshakConfig
 from ._version import __version__
 
 
@@ -58,9 +58,9 @@ def get(
     """
     Get or set a configuration value using Service and Item (vault-style, two-key).
     """
-    manager = ConfigManager(path=path)
+    config_mngr = DworshakConfig(path=path)
     
-    value = manager.get(
+    value = config_mngr.get(
         service=service,
         item=item,
     )
@@ -80,19 +80,19 @@ def set(
     """
     Get or set a configuration value using Service and Item (vault-style, two-key).
     """
-    manager = ConfigManager(path=path)
+    config_mngr = DworshakConfig(path=path)
     
-    exisiting_value = manager.get(
+    exisiting_value = config_mngr.get(
         service=service,
         item=item,
     )
     if exisiting_value is not None :
-        manager.get_value(service, item, value)
+        config_mngr.get_value(service, item, value)
         display_existing_val = value
         typer.echo(f"Existing: [{service}] [{item}] = {display_existing_val}")
 
     if (exisiting_value is None) or (exisiting_value is not None and overwrite):
-        value = manager.set(
+        value = config_mngr.set(
             service=service,
             item=item,
             prompt_message=message,

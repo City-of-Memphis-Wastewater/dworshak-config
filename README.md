@@ -24,13 +24,13 @@ pip install dworshak-config
 
 ### Basic I/O
 
-The `ConfigManager` is the primary interface for reading and writing data.
+The `DworshakConfig` is the primary interface for reading and writing data.
 
 ```python
-from dworshak_config import ConfigManager
+from dworshak_config import DworshakConfig
 
 # Uses default path: ~/.dworshak/config.json
-cfg = ConfigManager()
+cfg = DworshakConfig()
 
 # Store a value
 cfg.set_value("aws", "region", "us-east-1")
@@ -46,10 +46,10 @@ print(f"Targeting: {region}")
 Perfect for project-specific settings that shouldn't live in the global Dworshak folder.
 
 ```python
-from dworshak_config import ConfigManager
+from dworshak_config import DworshakConfig
 
 # Point to a specific project file
-project_cfg = ConfigManager("./.my_project/config.json")
+project_cfg = DworshakConfig("./.my_project/config.json")
 project_cfg.set_value("internal", "debug_mode", True)
 
 ```
