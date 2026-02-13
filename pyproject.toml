@@ -34,10 +34,11 @@ classifiers=[
     #"Development Status :: 5 - Production/Stable",
 ]
 
-
 keywords = [
     "configuration",
     "config"
+    "DworshakConfig"
+    "dworshak"
 ]
 
 [project.urls]
