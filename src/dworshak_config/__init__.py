@@ -1,5 +1,5 @@
-from .core import ConfigManager
+from .core import DworshakConfig
 
 __all__ = [
-    "ConfigManager"
+    "DworshakConfig"
 ]
