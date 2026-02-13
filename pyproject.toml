@@ -36,9 +36,9 @@ classifiers=[
 
 keywords = [
     "configuration",
-    "config"
-    "DworshakConfig"
-    "dworshak"
+    "config",
+    "DworshakConfig",
+    "dworshak",
 ]
 
 [project.urls]
