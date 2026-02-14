@@ -89,9 +89,21 @@ Data is stored in a clean, human-readable nested JSON format:
 
 ---
 
-## Sister Projects
+<a id="sister-project-dworshak-secret"></a>
+
+## Sister Projects in the Dworshak Ecosystem
 
 * **CLI/Orchestrator:** [dworshak](https://github.com/City-of-Memphis-Wastewater/dworshak)
 * **Interactive UI:** [dworshak-prompt](https://github.com/City-of-Memphis-Wastewater/dworshak-prompt)
 * **Secrets Storage:** [dworshak-secret](https://github.com/City-of-Memphis-Wastewater/dworshak-secret)
+* **Plaintext Pathed Configs:** [dworshak-secret](https://github.com/City-of-Memphis-Wastewater/dworshak-config)
+* **Classic .env Injection:** [dworshak-secret](https://github.com/City-of-Memphis-Wastewater/dworshak-env)
 
+```python
+pipx install dworshak
+pip install dworshak-secret
+pip install dworshak-config
+pip install dworshak-env
+pip install dworshak-prompt
+
+```
