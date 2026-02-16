@@ -73,7 +73,6 @@ def set(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
     value: str = typer.Option(None, "--value", help="Directly set a value."),
-    message: str = typer.Option(None, "--message", help="Custom prompt message."),
     path: Path = typer.Option(None, "--path", help="Custom config file path."),
     overwrite: bool = typer.Option(False, "--overwrite", help="Force a new prompt.")
 ):
