@@ -56,7 +56,7 @@ def get(
     path: Path = typer.Option(None, "--path", help="Custom config file path."),
 ):
     """
-    Get or set a configuration value using Service and Item (vault-style, two-key).
+    Get a configuration value (vault-style, two-key).
     """
     config_mngr = DworshakConfig(path=path)
     
@@ -78,7 +78,7 @@ def set(
     overwrite: bool = typer.Option(False, "--overwrite", help="Force a new prompt.")
 ):
     """
-    Get or set a configuration value using Service and Item (vault-style, two-key).
+    Set a configuration value (vault-style, two-key).
     """
     config_mngr = DworshakConfig(path=path)
     
