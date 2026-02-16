@@ -56,7 +56,7 @@ def get(
     path: Path = typer.Option(None, "--path", help="Custom config file path."),
 ):
     """
-    Get or set a configuration value using Service and Item (vault-style, two-key).
+    Get a configuration value (vault-style, two-key).
     """
     config_mngr = DworshakConfig(path=path)
     
@@ -66,19 +66,18 @@ def get(
     )
     if value:
         # Only print the value to stdout for piping/capture
-        typer.echo(f"[{service}] [{item}] = {value}")
+        typer.echo(value)
 
 @app.command()
 def set(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
     value: str = typer.Option(None, "--value", help="Directly set a value."),
-    message: str = typer.Option(None, "--message", help="Custom prompt message."),
     path: Path = typer.Option(None, "--path", help="Custom config file path."),
     overwrite: bool = typer.Option(False, "--overwrite", help="Force a new prompt.")
 ):
     """
-    Get or set a configuration value using Service and Item (vault-style, two-key).
+    Set a configuration value (vault-style, two-key).
     """
     config_mngr = DworshakConfig(path=path)
     
@@ -86,16 +85,18 @@ def set(
         service=service,
         item=item,
     )
+    
+    """
     if exisiting_value is not None :
         config_mngr.get_value(service, item, value)
         display_existing_val = value
         typer.echo(f"Existing: [{service}] [{item}] = {display_existing_val}")
+    """
 
     if (exisiting_value is None) or (exisiting_value is not None and overwrite):
         value = config_mngr.set(
             service=service,
             item=item,
-            prompt_message=message,
             overwrite=overwrite
         )
     else:
@@ -103,7 +104,7 @@ def set(
     
     if value:
         # Only print the value to stdout for piping/capture
-        typer.echo(f"[{service}] [{item}] = {value}")
+        typer.echo(value)
 
 if __name__ == "__main__":
     app()
