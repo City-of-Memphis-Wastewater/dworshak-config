@@ -89,7 +89,7 @@ def main() -> int:
         elif args.command == "set":
             config_mngr.set(args.service, args.item, args.value)
             stdlib_notify(f"Stored [{args.service}] [{args.item}] successfully.")
-            print(f"[{args.service}] [{args.item}] = {args.value}")
+            print(f"[{args.service}] [{args.item}] = {args.value}") 
             return 0
 
     except KeyboardInterrupt:
