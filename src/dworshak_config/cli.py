@@ -66,7 +66,7 @@ def get(
     )
     if value:
         # Only print the value to stdout for piping/capture
-        typer.echo(f"[{service}] [{item}] = {value}")
+        typer.echo(value)
 
 @app.command()
 def set(
@@ -86,16 +86,18 @@ def set(
         service=service,
         item=item,
     )
+    
+    """
     if exisiting_value is not None :
         config_mngr.get_value(service, item, value)
         display_existing_val = value
         typer.echo(f"Existing: [{service}] [{item}] = {display_existing_val}")
+    """
 
     if (exisiting_value is None) or (exisiting_value is not None and overwrite):
         value = config_mngr.set(
             service=service,
             item=item,
-            prompt_message=message,
             overwrite=overwrite
         )
     else:
@@ -103,7 +105,7 @@ def set(
     
     if value:
         # Only print the value to stdout for piping/capture
-        typer.echo(f"[{service}] [{item}] = {value}")
+        typer.echo(value)
 
 if __name__ == "__main__":
     app()
