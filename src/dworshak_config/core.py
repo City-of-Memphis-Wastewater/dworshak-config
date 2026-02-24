@@ -45,13 +45,19 @@ class DworshakConfig:
         """Pure I/O: Store value in JSON."""
         config = self._load()
 
+        if not overwrite and service in config and item in config[service]:
+            logger.warning(
+                f"Skipping set of {service}/{item} — already exists and overwrite=False"
+            )
+            return
+        """
         if not overwrite:
             if service in config and item in config[service]:
                 raise FileExistsError(
                     f"Configuration for {service}/{item} already exists "
                     f"(use overwrite=True to update)."
                 )
-                
+        """        
         # config.setdefault(service, {})[item] = value
         if service not in config:
             config[service] = {}
