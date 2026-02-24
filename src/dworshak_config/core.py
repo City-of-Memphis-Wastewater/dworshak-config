@@ -2,7 +2,7 @@
 from pathlib import Path
 import json
 import logging
-from typing import Any
+from typing import Any, List
 
 logger = logging.getLogger("dworshak_config")
 
@@ -41,11 +41,51 @@ class DworshakConfig:
         config = self._load()
         return config.get(service, {}).get(item)
 
-    def set(self, service: str, item: str, value: Any):
+    def set(self, service: str, item: str, value: Any, overwrite: bool = True):
         """Pure I/O: Store value in JSON."""
         config = self._load()
+
+        if not overwrite:
+            if service in config and item in config[service]:
+                raise FileExistsError(
+                    f"Configuration for {service}/{item} already exists "
+                    f"(use overwrite=True to update)."
+                )
+                
         # config.setdefault(service, {})[item] = value
         if service not in config:
             config[service] = {}
         config[service][item] = value
         self._save(config)
+
+    def remove(self, service: str, item: str) -> bool:
+        """
+        Remove a specific service/item entry if it exists.
+
+        Returns:
+            True if an entry was removed, False if it didn't exist.
+        """
+        config = self._load()
+        if service not in config or item not in config[service]:
+            return False
+
+        del config[service][item]
+
+        # Clean up empty service dicts (optional but nice)
+        if not config[service]:
+            del config[service]
+
+        self._save(config)
+        return True
+
+    def list_configs(self) -> List[tuple[str, str]]:
+        """
+        Return a list of all (service, item) pairs that exist in the config.
+        """
+        config = self._load()
+        result = []
+        for service, items in config.items():
+            if isinstance(items, dict):
+                for item in items:
+                    result.append((service, item))
+        return result
