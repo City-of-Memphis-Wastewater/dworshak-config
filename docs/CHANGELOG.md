@@ -6,6 +6,12 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ---
 
+## [0.2.3] – 2026-02-26
+### Fixed:
+- Add overwrite argment to DworshakConfig.set().
+
+---
+
 ## [0.2.2] – 2026-02-16
 ### Changed:
 - Adjust CLI to follow standard of required positionals, optional flag tweaks, and no prompting.
