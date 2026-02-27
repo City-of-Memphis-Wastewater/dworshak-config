@@ -15,7 +15,7 @@ class DworshakConfig:
         else:
             self.path = DEFAULT_CONFIG_PATH
 
-    def _load(self) -> dict:
+    def load(self) -> dict:
         """Loads the nested JSON config."""
         if not self.path.exists():
             return {}
@@ -38,12 +38,12 @@ class DworshakConfig:
 
     def get(self, service: str, item: str) -> str | None:
         """Pure I/O: Retrieve from JSON, return None if missing."""
-        config = self._load()
+        config = self.load()
         return config.get(service, {}).get(item)
 
     def set(self, service: str, item: str, value: Any, overwrite: bool = True):
         """Pure I/O: Store value in JSON."""
-        config = self._load()
+        config = self.load()
 
         if not overwrite and service in config and item in config[service]:
             logger.warning(
@@ -71,7 +71,7 @@ class DworshakConfig:
         Returns:
             True if an entry was removed, False if it didn't exist.
         """
-        config = self._load()
+        config = self.load()
         if service not in config or item not in config[service]:
             return False
 
@@ -88,7 +88,7 @@ class DworshakConfig:
         """
         Return a list of all (service, item) pairs that exist in the config.
         """
-        config = self._load()
+        config = self.load()
         result = []
         for service, items in config.items():
             if isinstance(items, dict):

@@ -147,12 +147,23 @@ def list_entries(
 ):
     """List all stored values in a given config file."""
     config_manager = DworshakConfig(path=path)
-    config_values = config_manager.list_configs()
-    table = Table(title="Stored Values")
+    
+    # Access the raw data for efficient listing of values
+    # Assuming DworshakConfig follows the same _load() pattern
+    data = config_manager.load()
+    
+    table = Table(title=f"Stored Values ({config_manager.path})")
     table.add_column("Service", style="cyan")
     table.add_column("Item", style="green")
-    for service, item in config_values:
-        table.add_row(service, item)
+    table.add_column("Value", style="yellow")
+    
+    # Nested iteration: Service -> Items
+    for service in sorted(data.keys()):
+        service_data = data[service]
+        for item in sorted(service_data.keys()):
+            value = str(service_data[item])
+            table.add_row(service, item, value)
+            
     console.print(table)
 
 if __name__ == "__main__":
