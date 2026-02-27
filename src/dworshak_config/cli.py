@@ -111,7 +111,7 @@ def remove(
         help="Skip confirmation prompt (useful in scripts or automation)"
     )
 ):
-    """Remove a credential from the config values."""
+    """Remove a config value."""
 
     config_manager = DworshakConfig(path=path)
     
@@ -137,7 +137,7 @@ def remove(
 def list_entries(
     path: Optional[Path] = typer.Option(None, "--path", "-p", help="Custom config file path."),
 ):
-    """List all stored credentials."""
+    """List all stored values in a given config file."""
     config_manager = DworshakConfig(path=path)
     config_values = config_manager.list_configs()
     table = Table(title="Stored Values")
