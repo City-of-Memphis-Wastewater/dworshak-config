@@ -44,7 +44,7 @@ def main() -> int:
     get_p = subparsers.add_parser("get", help="Retrieve a configuration value", add_help=False)
     get_p.add_argument("service", help="The service name")
     get_p.add_argument("item", help="The item key")
-    get_p.add_argument("--path", type=Path, help="Custom config file path")
+    get_p.add_argument("--path","-p", type=Path, help="Custom config file path")
     get_p.add_argument("-h", "--help", action="help", help="Show this help")
 
     # --- SET Command ---
@@ -52,7 +52,7 @@ def main() -> int:
     set_p.add_argument("service", help="The service name")
     set_p.add_argument("item", help="The item key")
     set_p.add_argument("value", help="The value to store")
-    set_p.add_argument("--path", type=Path, help="Custom config file path")
+    set_p.add_argument("--path","-p", type=Path, help="Custom config file path")
     set_p.add_argument("-h", "--help", action="help", help="Show this help")
 
     # --- Typer-Only Commands (Redirects) ---

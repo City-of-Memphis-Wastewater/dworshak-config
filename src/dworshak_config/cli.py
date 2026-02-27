@@ -53,7 +53,7 @@ except:
 def get(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
-    path: Path = typer.Option(None, "--path", help="Custom config file path."),
+    path: Path = typer.Option(None, "--path","-p", help="Custom config file path."),
 ):
     """
     Get a configuration value (vault-style, two-key).
@@ -73,7 +73,7 @@ def set(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
     value: str = typer.Argument(..., help="Directly set a value."),
-    path: Path = typer.Option(None, "--path", help="Custom config file path."),
+    path: Path = typer.Option(None, "--path","-p", help="Custom config file path."),
     overwrite: bool = typer.Option(True, "--overwrite/--no-overwrite", help="Force a new prompt.")
 ):
     """
