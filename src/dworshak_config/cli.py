@@ -54,6 +54,8 @@ def get(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
     path: Path = typer.Option(None, "--path","-p", help="Custom config file path."),
+    debug: bool = typer.Option(False, "--debug", "-d", help="Diagnostics."),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Details.")
 ):
     """
     Get a configuration value (vault-style, two-key).
@@ -74,7 +76,9 @@ def set(
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
     value: str = typer.Argument(..., help="Directly set a value."),
     path: Path = typer.Option(None, "--path","-p", help="Custom config file path."),
-    overwrite: bool = typer.Option(True, "--overwrite/--no-overwrite", help="Force a new prompt.")
+    overwrite: bool = typer.Option(True, "--overwrite/--no-overwrite", help="Force a new prompt."),
+    debug: bool = typer.Option(False, "--debug", "-d", help="Diagnostics."),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Details.")
 ):
     """
     Set a configuration value (vault-style, two-key).
@@ -109,7 +113,9 @@ def remove(
         "--yes","-y",
         is_flag=True,
         help="Skip confirmation prompt (useful in scripts or automation)"
-    )
+    ),
+    debug: bool = typer.Option(False, "--debug", "-d", help="Diagnostics."),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Details.")
 ):
     """Remove a config value."""
 
@@ -136,6 +142,8 @@ def remove(
 @app.command(name = "list")
 def list_entries(
     path: Optional[Path] = typer.Option(None, "--path", "-p", help="Custom config file path."),
+    debug: bool = typer.Option(False, "--debug", "-d", help="Diagnostics."),
+    verbose: bool = typer.Option(False, "--verbose", "-v", help="Details.")
 ):
     """List all stored values in a given config file."""
     config_manager = DworshakConfig(path=path)
