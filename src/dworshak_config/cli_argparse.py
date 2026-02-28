@@ -19,6 +19,7 @@ import sys
 import traceback
 from typing import Any, Callable
 from typing import get_type_hints, get_origin, get_args
+from collections.abc import Iterable
 
 from .spec import COMMANDS, CommandSpec
 
@@ -224,12 +225,23 @@ def dispatch(cmd: CommandSpec, args: argparse.Namespace) -> int:
         result = cmd.handler(**kwargs)
 
         # Convention: iterable return values are rendered line-by-line
-        if result is not None:
+        """if result is not None:
             for row in result:
                 if isinstance(row, (tuple, list)):
                     print("  ".join(map(str, row)))
                 else:
                     print(row)
+        """
+
+        if result is not None:
+            # Strings and bools are iterable-ish but not row data
+            if isinstance(result, Iterable) and not isinstance(result, (str, bytes, bool)):
+                for row in result:
+                    if isinstance(row, (tuple, list)):
+                        print("  ".join(map(str, row)))
+                    else:
+                        print(row)
+            # Non-iterable return values are treated as status only
 
         return 0
 
