@@ -6,6 +6,12 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ---
 
+## [0.2.4] – 2026-02-27
+### Chamged:
+- list cli command now shows a third column with the value, ans ahow the path.
+
+---
+
 ## [0.2.3] – 2026-02-26
 ### Fixed:
 - Add overwrite argment to DworshakConfig.set().
