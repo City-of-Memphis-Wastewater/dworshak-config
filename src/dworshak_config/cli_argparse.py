@@ -165,7 +165,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     # Global options (apply to all commands)
     parser.add_argument("-h", "--help", action="help", help="Show this help message and exit")
-    parser.add_argument("--debug", action="store_true", help="Enable diagnostic stack traces")
+    parser.add_argument("--debug","-d", action="store_true", help="Enable diagnostic stack traces")
+    parser.add_argument("--verbose","-v", action="store_true", help="Show details.")
     parser.add_argument(
         "--version",
         action="version",
