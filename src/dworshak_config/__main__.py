@@ -1,7 +1,7 @@
 # src/dworshak_prompt/__main__.py
 try:
-    #from .cli import app
-    from .cli_typer import app
+    from .cli import app
+    #from .cli_typer import app
     def run():
         app()
 except ImportError:
