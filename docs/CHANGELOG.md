@@ -7,7 +7,7 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 ---
 
 ## [0.2.4] – 2026-02-27
-### Chamged:
+### Changed:
 - list cli command now shows a third column with the value, ans ahow the path.
 - __main__.py now references cli_argparse.py rather than cli_stdlib.py. Continue to referwnce cli.py, not cli_typer.py.
 
