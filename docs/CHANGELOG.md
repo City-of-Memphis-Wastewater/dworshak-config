@@ -9,6 +9,10 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 ## [0.2.4] – 2026-02-27
 ### Chamged:
 - list cli command now shows a third column with the value, ans ahow the path.
+- __main__.py now references cli_argparse.py rather than cli_stdlib.py. Continue to referwnce cli.py, not cli_typer.py.
+
+### Added:
+- spec.py as a means to feed cli_argparse.py and cli_typer.py. The purpose of this is to reduce the maintenance burden for argparse based cli_stdlib.py. But cli_typer.py does not yet meet thw quality of cli.py.
 
 ---
 
