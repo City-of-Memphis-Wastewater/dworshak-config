@@ -24,7 +24,7 @@ os.environ["TERM"] = "xterm-256color"
 
 app = typer.Typer(
     name="dworshak-config",
-    help=f"Store and retrieve plaintext configuration values to JSON. (v{__version__})",
+    help=f"Store and retrieve plaintext two-key configuration values to JSON. (v{__version__})",
     no_args_is_help=True,
     add_completion=False,
     context_settings={"ignore_unknown_options": True,
