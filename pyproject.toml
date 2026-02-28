@@ -52,7 +52,7 @@ dworshak-config = "dworshak_config.__main__:run"
 typer = [
     "typer>=0.21.1",
     "rich>=14.3.2",
-    "typer-helptree>=0.1.10",
+    "typer-helptree>=0.2.6",
 ]
 
 [tool.uv]
