@@ -22,7 +22,7 @@ from typing import get_type_hints, get_origin, get_args
 from collections.abc import Iterable
 
 from .spec import COMMANDS, CommandSpec
-
+from ._version import __version__
 
 # ────────────────────────────────────────────────────────────────
 # I/O helpers (never leak to stdout unintentionally)
@@ -166,6 +166,12 @@ def build_parser() -> argparse.ArgumentParser:
     # Global options (apply to all commands)
     parser.add_argument("-h", "--help", action="help", help="Show this help message and exit")
     parser.add_argument("--debug", action="store_true", help="Enable diagnostic stack traces")
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"dworshak-config {__version__}",
+        help="Show the version and exit",
+    )
 
     subparsers = parser.add_subparsers(
         dest="command",
