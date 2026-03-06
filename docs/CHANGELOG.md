@@ -6,6 +6,12 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ---
 
+## [0.2.5] – 2026-03-06
+### Changed:
+- Stabilized clarity between stderr and stdout.
+
+---
+
 ## [0.2.4] – 2026-02-27
 ### Changed:
 - list cli command now shows a third column with the value, ans ahow the path.
