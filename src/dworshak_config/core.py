@@ -6,8 +6,8 @@ from typing import Any, List
 
 from .logging_setup import setup_logging
 
-#logger = logging.getLogger("dworshak_config")
-logger = setup_logging(initial=True)
+logger = logging.getLogger("dworshak_config")
+#logger = setup_logging(initial=True)
 
 DEFAULT_CONFIG_PATH = Path.home() / ".dworshak" / "config.json"
 

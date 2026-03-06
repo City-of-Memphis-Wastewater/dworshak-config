@@ -1,4 +1,4 @@
-# src/dworshak_prompt/__main__.py
+# src/dworshak_config/__main__.py
 try:
     from .cli import app
     #from .cli_typer import app
