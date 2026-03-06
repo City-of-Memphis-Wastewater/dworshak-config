@@ -89,6 +89,26 @@ Data is stored in a clean, human-readable nested JSON format:
 
 ---
 
+## CLI
+
+The [dworshak](https://github.com/City-of-Memphis-Wastewater/dworshak) layer is the intended primary CLI entry point, but the `dworshak-config` CLI can be used directly.
+
+See the `dworshak-config` Typer CLI structure.
+```
+dworshak-config helptree
+```
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/City-of-Memphis-Wastewater/dworshak-config/main/assets/dworshak-config_v0.2.5_helptree.svg" width="100%" alt="Screenshot of the dworshak-config CLI helptree">
+</p>
+
+`helptree` is utility funtion for Typer CLIs, imported from the `typer-helptree` library.
+
+- GitHub: https://github.com/City-of-Memphis-Wastewater/typer-helptree
+- PyPI: https://pypi.org/project/typer-helptree/
+
+---
+
 <a id="sister-project-dworshak-secret"></a>
 
 ## Sister Projects in the Dworshak Ecosystem

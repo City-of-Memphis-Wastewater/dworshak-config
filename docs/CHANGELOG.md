@@ -9,6 +9,7 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 ## [0.2.5] – 2026-03-06
 ### Changed:
 - Stabilized clarity between stderr and stdout.
+- Update helptree and change reference in README.md.
 
 ---
 
