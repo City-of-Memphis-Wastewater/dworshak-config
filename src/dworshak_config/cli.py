@@ -65,7 +65,7 @@ def get(
         service=service,
         item=item,
     )
-    if value:
+    if value is not None:
         # Only print the value to stdout for piping/capture
         typer.echo(value)
 

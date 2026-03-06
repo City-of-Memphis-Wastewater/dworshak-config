@@ -4,7 +4,10 @@ import json
 import logging
 from typing import Any, List
 
-logger = logging.getLogger("dworshak_config")
+from .logging_setup import setup_logging
+
+#logger = logging.getLogger("dworshak_config")
+logger = setup_logging(initial=True)
 
 DEFAULT_CONFIG_PATH = Path.home() / ".dworshak" / "config.json"
 
