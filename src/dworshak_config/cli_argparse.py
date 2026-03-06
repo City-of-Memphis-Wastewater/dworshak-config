@@ -230,16 +230,6 @@ def dispatch(cmd: CommandSpec, args: argparse.Namespace) -> int:
 
     try:
         result = cmd.handler(**kwargs)
-
-        # Convention: iterable return values are rendered line-by-line
-        """if result is not None:
-            for row in result:
-                if isinstance(row, (tuple, list)):
-                    print("  ".join(map(str, row)))
-                else:
-                    print(row)
-        """
-
         if result is not None:
             # Strings and bools are iterable-ish but not row data
             if isinstance(result, Iterable) and not isinstance(result, (str, bytes, bool)):

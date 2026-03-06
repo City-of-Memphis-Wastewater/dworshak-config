@@ -80,16 +80,17 @@ def main() -> int:
             value = config_mngr.get(args.service, args.item)
             if value is not None:
                 # Direct match to Typer output
-                print(f"[{args.service}] [{args.item}] = {value}")
+                stdlib_notify(f"{args.service}/{args.item} ")
+                print(value)
                 return 0
             else:
-                stdlib_notify(f"Error: [{args.service}] [{args.item}] not found.")
+                stdlib_notify(f"Error: {args.service}/{args.item} not found.")
                 return 1
 
         elif args.command == "set":
             config_mngr.set(args.service, args.item, args.value)
             stdlib_notify(f"Stored [{args.service}] [{args.item}] successfully.")
-            print(f"[{args.service}] [{args.item}] = {args.value}") 
+            print(args.value) 
             return 0
 
     except KeyboardInterrupt:
