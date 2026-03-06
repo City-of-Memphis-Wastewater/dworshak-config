@@ -19,7 +19,7 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 - __main__.py now references cli_argparse.py rather than cli_stdlib.py. Continue to referwnce cli.py, not cli_typer.py.
 
 ### Added:
-- spec.py as a means to feed cli_argparse.py and cli_typer.py. The purpose of this is to reduce the maintenance burden for argparse based cli_stdlib.py. But cli_typer.py does not yet meet thw quality of cli.py.
+- spec.py as a means to feed cli_argparse.py and cli_typer.py. The purpose of this is to reduce the maintenance burden for argparse based cli_stdlib.py. But cli_typer.py does not yet meet the quality of cli.py.
 
 ---
 
