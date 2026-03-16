@@ -60,13 +60,13 @@ While `dworshak-config` handles the **persistence**, it is designed to be orches
 
 ```python
 # In your application using dworshak-prompt
-from dworshak_prompt import DworshakGet
+from dworshak_prompt import Obtain
 
 # This will:
 # 1. Check ~/.dworshak/config.json for 'api_url'
 # 2. If missing, prompt the user (Console/GUI/Web)
 # 3. Save the answer back to config.json automatically
-api_url = DworshakGet.config("my_service", "api_url")
+api_url = Obtain.config("my_service", "api_url")
 
 ```
 
