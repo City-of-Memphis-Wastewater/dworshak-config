@@ -1,8 +1,9 @@
-# src/dworshak_config/_version.py
+# src/dworshak_config/_version.py 
 from pathlib import Path
 
-def get_version() -> str:
+PACKAGE_NAME = "dworshak-config"
 
+def get_version() -> str:
     # Try local VERSION file (Source/Dev)
     try:
         version_file = Path(__file__).parent / "VERSION"
@@ -14,11 +15,9 @@ def get_version() -> str:
     # Try metadata (Installed)
     try:
         from importlib.metadata import version, PackageNotFoundError
-        return version("dworshak-config")
+        return version(PACKAGE_NAME)
     except (ImportError, PackageNotFoundError):
         pass
-
-
     return "0.0.0-unknown"
 
 __version__ = get_version()
