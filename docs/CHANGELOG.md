@@ -9,6 +9,8 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 ## [0.2.6] – 2026-04-06
 ### Added:
 - `uv add json-repair`, for auto-healing.
+- Add `DWORSHAK_CONFIG_AUTO_HEAL_JSON` env var to trigger auto-healing of JSON structures.
+- Wire up "auto_heal" arg for DworshakConfig instantiation, but don't bother calling it from the CLI. The env var is fine for now.  
 
 ---
 
