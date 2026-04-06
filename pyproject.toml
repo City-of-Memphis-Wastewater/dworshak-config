@@ -6,6 +6,7 @@ description = "Get and set two-key plaintext configuration values stored to JSON
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
+    "json-repair>=0.44.1",
 ]
 
 authors = [
