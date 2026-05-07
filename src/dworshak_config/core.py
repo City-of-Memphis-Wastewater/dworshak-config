@@ -14,7 +14,7 @@ DEFAULT_CONFIG_PATH = Path.home() / ".dworshak" / "config.json"
 
 class DworshakConfig:
     def __init__(self, path: str | Path | None = None, auto_heal: bool = False):
-        if path and Path(path).exists() and str(path).endswith(".json"):
+        if path and str(path).endswith(".json"):
             self.path = Path(path)
         else:
             self.path = DEFAULT_CONFIG_PATH
