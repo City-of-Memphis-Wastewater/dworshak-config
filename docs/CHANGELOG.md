@@ -6,6 +6,12 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ---
 
+## [0.2.?] – 2026-05-07
+### Fixed:
+- Removed check that path arg exists yet in order to use arg instead of fallback during DworshakConfig.__init__()
+
+---
+
 ## [0.2.6] – 2026-04-06
 ### Added:
 - `uv add json-repair`, for auto-healing.
