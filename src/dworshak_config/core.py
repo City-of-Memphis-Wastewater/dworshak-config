@@ -63,7 +63,7 @@ class DworshakConfig:
         config = self.load()
 
         if not overwrite and service in config and item in config[service]:
-            logger.warning(
+            logger.debug(
                 f"Skipping set of {service}/{item} — already exists and overwrite=False"
             )
             return
