@@ -80,7 +80,7 @@ requires-dist = [
     { name = "json-repair", specifier = ">=0.44.1" },
     { name = "rich", marker = "extra == 'typer'", specifier = ">=14.3.2" },
     { name = "typer", marker = "extra == 'typer'", specifier = ">=0.21.1" },
-    { name = "typer-helptree", marker = "extra == 'typer'", specifier = ">=0.2.6" },
+    { name = "typer-helptree", marker = "extra == 'typer'", path = "../typer-helptree/dist/typer_helptree-0.2.9-py3-none-any.whl" },
 ]
 provides-extras = ["typer"]
 
@@ -215,11 +215,11 @@ wheels = [
 
 [[package]]
 name = "pyhabitat"
-version = "1.1.38"
+version = "1.2.7"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c5/4c/6aba6c4ee0b93218df08199c045cef6f0e2d9859efadb2b0cbafe6a72490/pyhabitat-1.1.38.tar.gz", hash = "sha256:9fb2fe7a214e6fe0d1c7584fd6faa150f280316c362ae758cae4ad9951a17ee1", size = 27881, upload-time = "2026-02-11T18:37:01.038Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c5/48/c43325b59eb05dee9eb972b4348c57efd18e6ee11e89c5d4fb3e926434b3/pyhabitat-1.2.7.tar.gz", hash = "sha256:d8e98e922bad0f4840a978d3182cd0094135e86e75992e75be7b41e0ba2b6853", size = 30494, upload-time = "2026-04-20T19:52:13.933Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/e8/c6/03e947024bc804a8792671527da4803c45d11e89eb40d6e8ff398bfa65e1/pyhabitat-1.1.38-py3-none-any.whl", hash = "sha256:a6a4ea26477047d9f173714ee12aad0c1c94b3fb5dc336eed827635e3d6cd66c", size = 26081, upload-time = "2026-02-11T18:36:59.778Z" },
+    { url = "https://files.pythonhosted.org/packages/0c/12/558747847e9cb4f5c3d4fe48d04ad1f9a87d68b31ba8d4d31ecda7fb98ad/pyhabitat-1.2.7-py3-none-any.whl", hash = "sha256:cc70cec06ea7a551136b51f90d419070288549b334ce03dcfabed34b0c09f2a5", size = 31413, upload-time = "2026-04-20T19:52:12.256Z" },
 ]
 
 [[package]]
@@ -359,16 +359,22 @@ wheels = [
 
 [[package]]
 name = "typer-helptree"
-version = "0.2.6"
-source = { registry = "https://pypi.org/simple" }
+version = "0.2.9"
+source = { path = "../typer-helptree/dist/typer_helptree-0.2.9-py3-none-any.whl" }
 dependencies = [
     { name = "pyhabitat" },
     { name = "rich" },
     { name = "typer" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/cc/3c/730421f2c3d6f9315d2992b560fb71d7dd5408f652d1c5917e728172b326/typer_helptree-0.2.6.tar.gz", hash = "sha256:5ed183e0032df6911d231d8d7097c47bfe1b21118d76b5a3f1432da19152782d", size = 10757, upload-time = "2026-02-18T02:31:32.498Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4a/77/0cf36263a941d374fd399225de6877dd539699b3bd587df98f420ad38471/typer_helptree-0.2.6-py3-none-any.whl", hash = "sha256:e81a8929961ba1226cf361ae0d4e3fb469913a8e0cd773018f6ee891bafcfa22", size = 12275, upload-time = "2026-02-18T02:31:31.271Z" },
+    { filename = "typer_helptree-0.2.9-py3-none-any.whl", hash = "sha256:ba70ea67b3e81dbea7c963b693c57fc335020c0a4764fa47c682557faf50c48a" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "pyhabitat", specifier = ">=1.2.6" },
+    { name = "rich", specifier = ">=14.2.0" },
+    { name = "typer", specifier = ">=0.20.0" },
 ]
 
 [[package]]

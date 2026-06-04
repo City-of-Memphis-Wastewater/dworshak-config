@@ -53,7 +53,7 @@ dworshak-config = "dworshak_config.__main__:run"
 typer = [
     "typer>=0.21.1",
     "rich>=14.3.2",
-    "typer-helptree>=0.2.6",
+    "typer-helptree>=0.2.9",
 ]
 
 [tool.uv]
@@ -65,6 +65,7 @@ resolution = "highest"
 [tool.uv.sources] # for hardcoding local wheels, to test without leveraging PyPI.
 dworshak-config = { workspace = true }
 #pyhabitat = { path = "../pyhabitat/dist/pyhabitat-0.2.4-py3-none-any.whl" }
+typer-helptree = { path = "../typer-helptree/dist/typer_helptree-0.2.9-py3-none-any.whl" }
 
 [build-system]
 requires = ["setuptools>=64", "wheel"]
