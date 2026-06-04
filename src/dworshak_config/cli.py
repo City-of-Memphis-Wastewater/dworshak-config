@@ -35,12 +35,9 @@ app = typer.Typer(
 
 @app.callback(invoke_without_command=True,no_args_is_help=True)
 def main(ctx: typer.Context,
-    version: Optional[bool] = typer.Option(
-    None, "--version", is_flag=True, help="Show the version."
-    ),
-    debug: bool = typer.Option(
-        False, "--debug", "-d", is_flag=True, help="Enable debug logging to stderr."
-    )
+    version: Optional[bool] = typer.Option(None, "--version", is_flag=True, help="Show the version."),
+    debug: bool = typer.Option(False, "--debug", "-d", is_flag=True, help="Enable diagnostic logging."),
+    verbose: bool = typer.Option(False, "--verbose", "-v", is_flag=True, help="Enable detail logging.")
     ):
     """
     Enable --version
@@ -48,20 +45,17 @@ def main(ctx: typer.Context,
     if version:
         typer.echo(__version__)
         raise typer.Exit(code=0)
-    configure_root_logging_for_application(debug)
-    
-try:
-    add_typer_helptree(app=app, console=console, version = __version__,hidden=True)
-except:
-    pass
+
+    configure_root_logging_for_application(debug, verbose)
+
+add_typer_helptree(app=app, console=console, version = __version__,hidden=True)
+
 @app.command()
 def get(
     service: str = typer.Argument(..., help="The service name (e.g., Maxson)."),
     item: str = typer.Argument(..., help="The item key (e.g., port)."),
     path: Path = typer.Option(None, "--path","-p", help="Custom config file path."),
-    debug: bool = typer.Option(False, "--debug", "-d", help="Diagnostics."),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Details.")
-):
+    ):
     """
     Get a configuration value (vault-style, two-key).
     """
@@ -82,9 +76,7 @@ def set(
     value: str = typer.Argument(..., help="Directly set a value."),
     path: Path = typer.Option(None, "--path","-p", help="Custom config file path."),
     overwrite: bool = typer.Option(True, "--overwrite/--no-overwrite", help="Force a new prompt."),
-    debug: bool = typer.Option(False, "--debug", "-d", help="Diagnostics."),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Details.")
-):
+    ):
     """
     Set a configuration value (vault-style, two-key).
     """
@@ -117,11 +109,8 @@ def remove(
         False,
         "--yes","-y",
         is_flag=True,
-        help="Skip confirmation prompt (useful in scripts or automation)"
-    ),
-    debug: bool = typer.Option(False, "--debug", "-d", help="Diagnostics."),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Details.")
-):
+        help="Skip confirmation prompt (useful in scripts or automation)"),
+    ):
     """Remove a config value."""
 
     config_manager = DworshakConfig(path=path)
@@ -147,9 +136,7 @@ def remove(
 @app.command(name = "list")
 def list_entries(
     path: Optional[Path] = typer.Option(None, "--path", "-p", help="Custom config file path."),
-    debug: bool = typer.Option(False, "--debug", "-d", help="Diagnostics."),
-    verbose: bool = typer.Option(False, "--verbose", "-v", help="Details.")
-):
+    ):
     """List all stored values in a given config file."""
     config_manager = DworshakConfig(path=path)
     
