@@ -1,12 +1,27 @@
 # src/dworshak_config/__main__.py
+"""
+Entry point for dworshak-config Rich/Typer CLI.
+"""
+TYPERSUCCESS=None
 try:
+    import typer
+    TYPERSUCCESS=True
+except (ImportError, ModuleNotFoundError):
+    TYPERSUCCESS=False
+
+if TYPERSUCCESS:
+    # Attempt to use the feature-rich CLI
     from .cli import app
-    #from .cli_typer import app
     def run():
         app()
-except ImportError:
-    #from .cli_stdlib import main as run
-    from .cli_argparse import main as run
+else:
+    import sys
+    def run():
+        print(
+            "Please install this package with the 'typer' extra to utilize the CLI.",
+            file=sys.stderr
+        )
+        sys.exit(1)
 
 if __name__ == "__main__":
     run()
