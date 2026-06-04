@@ -6,12 +6,14 @@ from rich.table import Table
 import os
 from pathlib import Path
 from typing import Optional
+
 try:
     from typer_helptree import add_typer_helptree
 except:
     pass
 from .core import DworshakConfig
 from ._version import __version__
+from .logging_setup import configure_root_logging_for_application
 
 console = Console(stderr=True)
 app = typer.Typer()
@@ -31,10 +33,13 @@ app = typer.Typer(
 )
 
 
-@app.callback(invoke_without_command=True)
+@app.callback(invoke_without_command=True,no_args_is_help=True)
 def main(ctx: typer.Context,
     version: Optional[bool] = typer.Option(
     None, "--version", is_flag=True, help="Show the version."
+    ),
+    debug: bool = typer.Option(
+        False, "--debug", "-d", is_flag=True, help="Enable debug logging to stderr."
     )
     ):
     """
@@ -43,7 +48,8 @@ def main(ctx: typer.Context,
     if version:
         typer.echo(__version__)
         raise typer.Exit(code=0)
-
+    configure_root_logging_for_application(debug)
+    
 try:
     add_typer_helptree(app=app, console=console, version = __version__,hidden=True)
 except:
