@@ -25,3 +25,4 @@ def configure_root_logging_for_application(debug: bool=False,verbose: bool=False
     root_logger.addHandler(handler)
     root_logger.debug(f"Debug logging enabled for {INTENT}.")
     root_logger.info(f"Verbose logging enabled for {INTENT}.")
+
