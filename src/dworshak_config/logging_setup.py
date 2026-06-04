@@ -1,11 +1,7 @@
 # src/dworshak_config/logging_setup.py
 from __future__ import annotations
-import os
-import json
-#import logging.config
 import logging
 import sys
-import traceback
 from rich.logging import RichHandler
 from rich.console import Console
 console = Console(stderr=True)
