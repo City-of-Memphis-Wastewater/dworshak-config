@@ -1,6 +1,6 @@
 # src/dworshak_config/__main__.py
 """
-Entry point for dworshak-config Rich/Typer CLI.
+Entry point for the dworshak-config Rich/Typer CLI.
 """
 TYPERSUCCESS=None
 try:
