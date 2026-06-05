@@ -13,7 +13,7 @@ except:
     pass
 from .core import DworshakConfig
 from ._version import __version__
-from .logging_setup import configure_root_logging_for_application
+from .logging_setup import configure_logging_for_application
 
 console = Console(stderr=True)
 app = typer.Typer()
@@ -46,7 +46,7 @@ def main(ctx: typer.Context,
         typer.echo(__version__)
         raise typer.Exit(code=0)
 
-    configure_root_logging_for_application(debug, verbose)
+    configure_logging_for_application(debug, verbose)
 
 add_typer_helptree(app=app, console=console, version = __version__,hidden=True)
 

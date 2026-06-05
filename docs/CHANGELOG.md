@@ -8,7 +8,7 @@ The format is (read: strives to be) based on [Keep a Changelog](https://keepacha
 
 ## [0.2.8] – 2026-06-04
 ### Changed:
-- Implement new logging approach for the CLI application, using logging_setup.configure_root_logging_for_application()
+- Implement new logging approach for the CLI application, using logging_setup.configure_logging_for_application()
 - Remove redundant debug and verbose flags from each CLI command.
 
 ---
