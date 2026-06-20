@@ -1,4 +1,5 @@
 # src/dworshak_config/cli.py
+from __future__ import annotations
 import typer
 from typer.models import OptionInfo
 from rich.console import Console
